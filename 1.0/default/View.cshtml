@@ -1,0 +1,56 @@
+﻿@inherits RocketContent.Components.RocketContentTokens<Simplisity.SimplisityRazor>
+@using DNNrocketAPI;
+@using Simplisity;
+@using RocketContent.Components;
+@using DNNrocketAPI.Components;
+
+@AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")
+@AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketContent/App_LocalResources/")
+
+@{ 
+ var articleData = (ArticleLimpet)Model.List.First();
+ var sessionParams = (SessionParams)Model.SessionParamsData; 
+}
+
+<!------------------------------------------------------------------------------------------------------------------------------>
+
+<div class="w3-content w3-display-container">
+
+    @foreach (var articleRowData in articleData.GetRows())
+    {
+        var imageList = articleRowData.GetImages();
+        foreach (var i in imageList)
+        {
+            <div class="w3-display-container slidercap@(articleData.DataRef)">
+                <img src="@ThumbnailImageWebsiteDomainUrl(i.RelPath, 300, 200)" style="width:100%" />
+                <div class="@(i.Info.GetXmlProperty("genxml/select/displaypos")) w3-large w3-container w3-padding-16 w3-black">
+                    @i.Info.GetXmlProperty("genxml/lang/genxml/textbox/imagealt")
+                </div>
+            </div>                             
+        }
+    }
+    <div class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</div>
+    <div class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</div>
+
+</div>
+
+<script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("slidercap@(articleData.DataRef)");
+        if (n > x.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = x.length }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
+    }
+</script>
+
