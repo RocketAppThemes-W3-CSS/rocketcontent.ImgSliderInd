@@ -46,15 +46,12 @@
     {
         var imageList = articleRowData.GetImages();
         foreach (var i in imageList)
-
         {
-            <div class="w3-col s2">
+            <div class="w3-col s6 m4 l2 w3-padding">
                 <img class="demo@(articleData.DataRef) w3-opacity w3-hover-opacity-off" src="@ThumbnailImageWebsiteDomainUrl(i.RelPath, 300, 200)" style="width:100%;cursor:pointer" onclick="currentDiv(@lp2)">
             </div>
             lp2 += 1;
-
         }
-
     }
 
 </div>
