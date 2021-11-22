@@ -7,12 +7,10 @@
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketContent/App_LocalResources/")
 
-@{
-    var articleData = (ArticleLimpet)Model.List.First();
-    var sessionParams = (SessionParams)Model.SessionParamsData;
-    var lp = 1;
-    var lp2 = 1;
-}
+@{ var articleData = (ArticleLimpet)Model.List.First();
+                var sessionParams = (SessionParams)Model.SessionParamsData;
+                var lp = 1;
+                var lp2 = 1; }
 
 <!------------------------------------------------------------------------------------------------------------------------------>
 
@@ -29,44 +27,41 @@
         {
             if (lp == 1)
             {
-                <img class="sliderind@(articleData.ModuleRef)" src="@ThumbnailImageWebsiteDomainUrl(i.RelPath, 640, 200)" style="width:100%">
+<img class="sliderind@(sessionParams.ModuleRef)" src="@ThumbnailImageWebsiteDomainUrl(i.RelPath, 640, 200)" style="width:100%"> }
+                    else
+                    {
+<img class="sliderind@(sessionParams.ModuleRef)" src="@ThumbnailImageWebsiteDomainUrl(i.RelPath, 640, 200)" style="width:100%;display:none">}
+                    lp += 1;
+                }
+
             }
-            else
-            {
-                <img class="sliderind@(articleData.ModuleRef)" src="@ThumbnailImageWebsiteDomainUrl(i.RelPath, 640, 200)" style="width:100%;display:none">
-            }
-            lp += 1;
-        }
 
-    }
+    <div class="w3-row-padding w3-section">
 
-<div class="w3-row-padding w3-section">
-
-    @foreach (var articleRowData in articleData.GetRows())
-    {
-        var imageList = articleRowData.GetImages();
-        foreach (var i in imageList)
+        @foreach (var articleRowData in articleData.GetRows())
         {
-            <div class="w3-col s6 m4 l2 w3-padding">
-                <img class="demo@(articleData.ModuleRef) w3-opacity w3-hover-opacity-off" src="@ThumbnailImageWebsiteDomainUrl(i.RelPath, 300, 200)" style="width:100%;cursor:pointer" onclick="currentDiv@(articleData.DataRef)(@lp2)">
-            </div>
-            lp2 += 1;
+            var imageList = articleRowData.GetImages();
+            foreach (var i in imageList)
+            {
+<div class="w3-col s6 m4 l2 w3-padding">
+    <img class="demo@(sessionParams.ModuleRef) w3-opacity w3-hover-opacity-off" src="@ThumbnailImageWebsiteDomainUrl(i.RelPath, 300, 200)" style="width:100%;cursor:pointer" onclick="currentDiv@(sessionParams.ModuleRef)(@lp2)">
+</div>lp2 += 1;
+                }
+            }
+
+    </div>
+
+
+
+    <script>
+        function currentDiv@(sessionParams.ModuleRef)(n) {
+            showDivs@(sessionParams.ModuleRef)(slideIndex = n);
         }
-    }
 
-</div>
-    
-
-
-<script>
-        function currentDiv@(articleData.DataRef)(n) {
-            showDivs@(articleData.DataRef)(slideIndex = n);
-        }
-
-        function showDivs@(articleData.DataRef)(n) {
+        function showDivs@(sessionParams.ModuleRef)(n) {
             var i;
-            var x = document.getElementsByClassName("sliderind@(articleData.ModuleRef)");
-            var dots = document.getElementsByClassName("demo@(articleData.ModuleRef)");
+            var x = document.getElementsByClassName("sliderind@(sessionParams.ModuleRef)");
+            var dots = document.getElementsByClassName("demo@(sessionParams.ModuleRef)");
             if (n > x.length) { slideIndex = 1 }
             if (n < 1) { slideIndex = x.length }
             for (i = 0; i < x.length; i++) {
@@ -78,7 +73,7 @@
             x[slideIndex - 1].style.display = "block";
             dots[slideIndex - 1].className += " w3-opacity-off";
         }
-</script>
+    </script>
 
 
 
