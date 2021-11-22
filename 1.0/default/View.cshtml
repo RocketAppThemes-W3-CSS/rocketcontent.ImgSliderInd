@@ -29,11 +29,11 @@
         {
             if (lp == 1)
             {
-                <img class="sliderind@(articleData.DataRef)" src="@ThumbnailImageWebsiteDomainUrl(i.RelPath, 640, 200)" style="width:100%">
+                <img class="sliderind@(articleData.ModuleRef)" src="@ThumbnailImageWebsiteDomainUrl(i.RelPath, 640, 200)" style="width:100%">
             }
             else
             {
-                <img class="sliderind@(articleData.DataRef)" src="@ThumbnailImageWebsiteDomainUrl(i.RelPath, 640, 200)" style="width:100%;display:none">
+                <img class="sliderind@(articleData.ModuleRef)" src="@ThumbnailImageWebsiteDomainUrl(i.RelPath, 640, 200)" style="width:100%;display:none">
             }
             lp += 1;
         }
@@ -48,7 +48,7 @@
         foreach (var i in imageList)
         {
             <div class="w3-col s6 m4 l2 w3-padding">
-                <img class="demo@(articleData.DataRef) w3-opacity w3-hover-opacity-off" src="@ThumbnailImageWebsiteDomainUrl(i.RelPath, 300, 200)" style="width:100%;cursor:pointer" onclick="currentDiv(@lp2)">
+                <img class="demo@(articleData.ModuleRef) w3-opacity w3-hover-opacity-off" src="@ThumbnailImageWebsiteDomainUrl(i.RelPath, 300, 200)" style="width:100%;cursor:pointer" onclick="currentDiv(@lp2)">
             </div>
             lp2 += 1;
         }
@@ -65,8 +65,8 @@
 
         function showDivs(n) {
             var i;
-            var x = document.getElementsByClassName("sliderind@(articleData.DataRef)");
-            var dots = document.getElementsByClassName("demo@(articleData.DataRef)");
+            var x = document.getElementsByClassName("sliderind@(articleData.ModuleRef)");
+            var dots = document.getElementsByClassName("demo@(articleData.ModuleRef)");
             if (n > x.length) { slideIndex = 1 }
             if (n < 1) { slideIndex = x.length }
             for (i = 0; i < x.length; i++) {
