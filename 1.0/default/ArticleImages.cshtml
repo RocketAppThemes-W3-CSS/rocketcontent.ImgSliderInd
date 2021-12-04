@@ -4,6 +4,8 @@
 @using RocketContent.Components;
 @using RocketPortal.Components;
 
+@SecuritySiteKey(Model.SessionParamsData)
+
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocket/Images/App_LocalResources/")
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketContent/App_LocalResources/")
@@ -57,7 +59,7 @@
                             @HiddenField(imgInfo, "genxml/hidden/imagepatharticleimage", "", "", false, imgLP)
                         </div>
                         <div class="w3-col m2 w3-padding">
-                            @DropDownList(imgInfo, "genxml/select/displaypos", "w3-display-topleft,w3-display-topright,w3-display-bottomleft,w3-display-bottomright,w3-display-left,w3-display-right,w3-display-middle", "topleft,topright,bottomleft,bottomright,left,right,middle", " class='w3-input w3-border  w3-margin-top' ", "w3-display-bottomleft",false,imgLP)
+                            @DropDownList(imgInfo, "genxml/select/displaypos", "w3-display-topleft,w3-display-topright,w3-display-bottomleft,w3-display-bottomright,w3-display-left,w3-display-right,w3-display-middle", "topleft,topright,bottomleft,bottomright,left,right,middle", " class='w3-input w3-border  w3-margin-top' ", "w3-display-bottomleft", false, imgLP)
                         </div>
                     </div>
                 </div>

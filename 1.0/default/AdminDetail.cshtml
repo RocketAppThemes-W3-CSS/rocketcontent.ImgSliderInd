@@ -5,6 +5,8 @@
 @using DNNrocketAPI.Components;
 @using RocketPortal.Components;
 
+@SecuritySiteKey(Model.SessionParamsData)
+
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketContent/App_LocalResources/")
 
@@ -34,7 +36,7 @@
 
 <div class="w3-content" style="max-width:1200px">
     @RenderTemplate("ArticleImages.cshtml", appTheme, Model, true)
-    @{ 
+    @{
         Model.SetSetting("imageresize", "1200");
     }
     @RenderTemplate("ArticleImageSelect.cshtml", appThemeSystem, Model, true)
