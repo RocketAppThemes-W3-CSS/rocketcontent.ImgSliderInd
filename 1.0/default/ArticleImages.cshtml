@@ -4,21 +4,21 @@
 @using RocketContent.Components;
 @using RocketPortal.Components;
 
-@SecuritySiteKey(Model.SessionParamsData)
-
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocket/Images/App_LocalResources/")
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketContent/App_LocalResources/")
 
 @{
+    var appThemeSystem = new AppThemeSystemLimpet("rocketcontent");
+    var sessionParams = Model.SessionParamsData;
     var articleData = (ArticleLimpet)Model.List.First();
+    var appTheme = (AppThemeLimpet)Model.GetDataObject("apptheme");
     var articleRowData = (ArticleRowLimpet)Model.GetDataObject("articlerow");
-    var imgLP = 0;
-
+    var remoteModule = (RemoteModule)Model.GetDataObject("remotemodule");
+    var portalData = new PortalLimpet(articleData.PortalId);
     var datalist = articleRowData.GetImageList();
     var globalSettings = new SystemGlobalData();
-    var sessionParams = Model.SessionParamsData;
-    var portalData = new PortalLimpet(articleData.PortalId);
+    var imgLP = 0;
 }
 
 <div class="w3-row imagelistdatasection">
