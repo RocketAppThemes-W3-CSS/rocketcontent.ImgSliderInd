@@ -12,9 +12,11 @@
     var remoteModule = (RemoteModule)Model.GetDataObject("remotemodule");
     var portalData = new PortalLimpet(articleData.PortalId);
     var globalSettings = new SystemGlobalData();
+    var hbsDict = new Dictionary<string, SimplisityInfo>();
+    foreach (ArticleLimpet o in Model.List)
+    {
+        hbsDict.Add("data", o.Info);
+    }
+    hbsDict.Add("sessionparams", sessionParams.Info);
 }
-
-<!------------------------------------------------------------------------------------------------------------------------------>
-
-<link rel="stylesheet" href="@(sessionParams.EngineURL)@DNNrocketUtils.AppendFileModifiedDate("/DesktopModules/RocketThemes/rocketcontent.ImgSliderInd/1.0/css/theme.css")">
-<script type="text/javascript" src="@(sessionParams.EngineURL)@DNNrocketUtils.AppendFileModifiedDate("/DesktopModules/RocketThemes/rocketcontent.ImgSliderInd/1.0/js/theme.js")"></script>
+@RenderHandleBars(hbsDict, appTheme, "ViewHeader.hbs", remoteModule.ModuleRef)
