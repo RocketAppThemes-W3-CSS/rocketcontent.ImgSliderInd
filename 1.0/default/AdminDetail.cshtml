@@ -44,6 +44,9 @@
 
 <script>
     $(document).ready(function () {
+        // IMPORTANT: Ensure we have the correct server side langauge when editing.
+        simplisity_setSessionField("culturecode", '@DNNrocketUtils.GetCurrentCulture()');
     });
 </script>
+
 
